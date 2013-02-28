@@ -8,8 +8,30 @@ namespace _2
 {
     public class ListElement
     {
-        public int num;
-        public ListElement next;
+        private int num;
+
+        public int GetNum()
+        {
+            return num;
+        }
+
+        public void SetNum(int num)
+        {
+            this.num = num;
+        }
+
+        private  ListElement next;
+
+        public ListElement GetNext()
+        {
+            return next;
+        }
+
+        public void SetNext(ListElement value)
+        {
+            this.next = value;
+        }
+
     }
 
     public class List
@@ -20,30 +42,30 @@ namespace _2
         public List()
         {
             head = new ListElement();
-            head.num = 0;
-            head.next = null;
+            head.SetNum(0);
+            head.SetNext(null);
             length = 0;
         }
 
         public void Insert(int value, ListElement pos)
         {
             ListElement temp = new ListElement();
-            temp.num = value;
-            temp.next = pos.next;
-            pos.next = temp;
+            temp.SetNum(value);
+            temp.SetNext(pos.GetNext());
+            pos.SetNext(temp);
             ++length;
         }
 
         public void Remove(ListElement pos)
         {
             ListElement temp = this.head;
-            if (this.head.next == null)
+            if (this.head.GetNext() ==null)
                 return;
-            while (temp.next == null || temp.next != pos)
+            while (temp.GetNext() == null || temp.GetNext() != pos)
             {
-                temp = temp.next;
+                temp = temp.GetNext();
             }
-            temp.next = pos.next;
+            temp.SetNext(pos.GetNext());
             --length;
         }
 
@@ -54,12 +76,12 @@ namespace _2
 
         public int Retrieve(ListElement pos)
         {
-            return pos.num;
+            return pos.GetNum();
         }
 
         public ListElement Next(ListElement pos)
         {
-            return pos.next;
+            return pos.GetNext();
         }
 
         public ListElement First()
@@ -70,11 +92,11 @@ namespace _2
         public bool Find(int value)
         {
             ListElement pos = this.First();
-            while (pos.next != null)
+            while (pos.GetNext() != null)
             {
-                if (pos.next.num == value)
+                if (pos.GetNext().GetNum() == value)
                     return true;
-                pos = pos.next;
+                pos.SetNext(pos.GetNext());
             }
             return false;
         }
@@ -82,11 +104,11 @@ namespace _2
         public void PrintList()
         {
             ListElement pos = this.First();
-            while (pos.next != null)
+            for (int i = 0; i < length; ++i)
             {
-                Console.Write(Retrieve(pos.next));
+                Console.Write(Retrieve(pos.GetNext()));
                 Console.Write(' ');
-                pos = pos.next;
+                pos = pos.GetNext();
             }
             Console.WriteLine();
         }
