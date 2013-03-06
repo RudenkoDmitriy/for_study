@@ -60,5 +60,11 @@ namespace HashTableTest
             ht.Remove(234);
             Assert.IsFalse(ht.Find(234));
         }
+
+        [TestMethod]
+        public void TestAdd100()
+        {
+            ht.Add(100);
+        }
     }
 }
