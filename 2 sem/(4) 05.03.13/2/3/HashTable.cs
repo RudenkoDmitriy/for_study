@@ -13,14 +13,14 @@ namespace _2
             {
                 list[i] = new List();
             }
-            this.Hash = hash;
+            this.hash = hash;
         }
 
-        private IHash Hash;
+        private IHash hash;
 
         public bool Find(int value)
         {
-            int h = Hash.Hash(value);
+            int h = hash.Hash(value);
             return list[h].Find(value);
         }
 
@@ -28,7 +28,7 @@ namespace _2
         {
             if (!this.Find(value))
                 return;
-            int h = Hash.Hash(value);
+            int h = hash.Hash(value);
             ListElement pos = list[h].First();
             while ((pos.next != null) || (list[h].Retrieve(pos) != value))
             {
@@ -45,7 +45,7 @@ namespace _2
         {
             if (!Find(value))
             {
-                int h = Hash.Hash(value);
+                int h = hash.Hash(value);
                 ListElement pos = list[h].First();
                 list[h].Insert(value, pos);
             }

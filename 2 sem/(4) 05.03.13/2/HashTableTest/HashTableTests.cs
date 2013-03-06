@@ -42,6 +42,23 @@ namespace HashTableTest
             ht.Remove(221);
         }
 
+        [TestMethod]
+        public void TestAddBigNumber()
+        {
+            ht.Add(1235546510);
+            Assert.IsTrue(ht.Find(1235546510));
+        }
 
+        [TestMethod]
+        public void TestOtherHash()
+        {
+            Hash2 temp = new Hash2();
+            ht = new HashTable(temp);
+            ht.Add(234);
+            Assert.IsTrue(ht.Find(234));
+            Assert.IsFalse(ht.Find(3));
+            ht.Remove(234);
+            Assert.IsFalse(ht.Find(234));
+        }
     }
 }

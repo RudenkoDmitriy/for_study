@@ -5,7 +5,7 @@ namespace _2
     {
         public int Hash(int value)
         {
-            return value / 151;
+            return value % 71;
         }
     }
 }
