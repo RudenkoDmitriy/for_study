@@ -20,7 +20,7 @@ namespace _2
 
         public bool Find(int value)
         {
-            int h = hash.Hash(value);
+            int h = hash.Hash(value, n);
             return list[h].Find(value);
         }
 
@@ -28,7 +28,7 @@ namespace _2
         {
             if (!this.Find(value))
                 return;
-            int h = hash.Hash(value);
+            int h = hash.Hash(value, n);
             ListElement pos = list[h].First();
             while ((pos.next != null) || (list[h].Retrieve(pos) != value))
             {
@@ -45,7 +45,7 @@ namespace _2
         {
             if (!Find(value))
             {
-                int h = hash.Hash(value);
+                int h = hash.Hash(value, n);
                 ListElement pos = list[h].First();
                 list[h].Insert(value, pos);
             }

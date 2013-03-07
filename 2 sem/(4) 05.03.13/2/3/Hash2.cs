@@ -3,16 +3,9 @@ namespace _2
 {
     public class Hash2 : IHash
     {
-        public Hash2()
+        public int Hash(int value, int n)
         {
-            this.n = 100;
+            return value.GetHashCode() % (n - 1);
         }
-
-        public int Hash(int value)
-        {
-            return (value * (n - 1)) % (n - 1);
-        }
-
-        private int n;
     }
 }
