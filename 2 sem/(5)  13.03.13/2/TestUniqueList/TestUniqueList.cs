@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using _2;
 
 namespace TestUniqueList
-{
+{   
     [TestClass]
     public class TestUniqueList
     {
@@ -42,6 +42,7 @@ namespace TestUniqueList
         }
 
         [TestMethod]
+        [ExpectedException(typeof(AddExistingNumberException))]
         public void TestDubleInsert()
         {
             list.Insert(10, list.First());
@@ -51,6 +52,7 @@ namespace TestUniqueList
         }
 
         [TestMethod]
+        [ExpectedException(typeof(RemoveNotExistingNumberException))]
         public void TestRemoveNotExistingNumber()
         {
             list.Remove(0);

@@ -2,7 +2,7 @@
 
 namespace _2
 {
-    class RemoveNotExistingNumberException : ApplicationException
+    public class RemoveNotExistingNumberException : ApplicationException
     {
         public RemoveNotExistingNumberException()
         {

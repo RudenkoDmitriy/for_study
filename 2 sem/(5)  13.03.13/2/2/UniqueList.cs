@@ -7,14 +7,7 @@ namespace _2
         {
             if (this.Find(value))
             {
-                try
-                {
                     throw new AddExistingNumberException();
-                }
-                catch (AddExistingNumberException e)
-                {
-                    return;
-                }
             }
             base.Insert(value, pos);
         }
@@ -23,14 +16,7 @@ namespace _2
         {
             if (!this.Find(value))
             {
-                try
-                {
                     throw new RemoveNotExistingNumberException();
-                }
-                catch (RemoveNotExistingNumberException e)
-                {
-                    return;
-                }
             }
             base.Remove(value);
         }
