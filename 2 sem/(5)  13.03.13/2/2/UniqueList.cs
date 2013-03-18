@@ -3,7 +3,7 @@ namespace _2
 {
     public class UniqueList : List
     {
-        public void Insert(int value, ListElement pos)
+        public override void Insert(int value, ListElement pos)
         {
             if (this.Find(value))
             {
@@ -12,7 +12,7 @@ namespace _2
             base.Insert(value, pos);
         }
 
-        public void Remove(int value)
+        public override void Remove(int value)
         {
             if (!this.Find(value))
             {

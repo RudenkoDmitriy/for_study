@@ -15,7 +15,7 @@ namespace _2
             length = 0;
         }
 
-        public void Insert(int value, ListElement pos)
+        public virtual void Insert(int value, ListElement pos)
         {
             ListElement temp = new ListElement();
             temp.SetNum(value);
@@ -37,7 +37,7 @@ namespace _2
             --length;
         }
 
-        public void Remove(int value)
+        public virtual  void Remove(int value)
         {
             if (!this.Find(value))
             {
