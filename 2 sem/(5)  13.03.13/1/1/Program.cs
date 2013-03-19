@@ -5,25 +5,26 @@ namespace _1
 {
     class Program
     {
+        static void CounTreeTest(string s)
+        {
+            CountTree tree = new CountTree(s);
+            tree.Print();
+            Console.WriteLine();
+            Console.WriteLine(tree.Count());
+            Console.WriteLine("***************");
+        }
+
         static void Main(string[] args)
         {
-            CountTree tree = new CountTree("example_0.txt");
-            tree.Print();
+            CounTreeTest("example_0.txt");
+            CounTreeTest("example_2.txt");
+            CounTreeTest("example_3.txt");
+            CounTreeTest("example_4.txt");
+            CounTreeTest("example_6.txt");
+            CountTree tree = new CountTree("example_4.txt");
+            tree.Root().left.Print();
             Console.WriteLine();
-            Console.WriteLine(tree.Count());
-            tree.Root().left.left.Print();
-            tree = new CountTree("example_2.txt");
-            tree.Print();
-            Console.WriteLine();
-            Console.WriteLine(tree.Count());
-            tree = new CountTree("example_4.txt");
-            tree.Print();
-            Console.WriteLine();
-            Console.WriteLine(tree.Count());
-            tree = new CountTree("example_6.txt");
-            tree.Print();
-            Console.WriteLine();
-            Console.WriteLine(tree.Count());
+            Console.WriteLine(tree.Root().left.Action());
             Console.ReadKey();
         }
     }

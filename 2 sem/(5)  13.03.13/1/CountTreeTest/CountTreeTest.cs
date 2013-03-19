@@ -7,26 +7,48 @@ namespace CountTreeTest
     [TestClass]
     public class CountTreeTest
     {
-        CountTree tree = null;
-
-        [TestInitialize]
-        public void Initialize()
-        {
-            tree = null;
-        }
+        private CountTree tree = null;
 
         [TestMethod]
-        public void TestAdd()
+        public void TestSimpleAdd()
         {
             tree = new CountTree("example_2.txt");
             Assert.AreEqual(tree.Count(), 2);
         }
 
         [TestMethod]
-        public void TestSubtract()
+        public void TestSubtractAndMultiply()
         {
             tree = new CountTree("example_0.txt");
             Assert.AreEqual(tree.Count(), 0);
+        }
+
+        [TestMethod]
+        public void TestDivide()
+        {
+            tree = new CountTree("example_3.txt");
+            Assert.AreEqual(tree.Count(), 3);
+        }
+
+        [TestMethod]
+        public void TestLeftNode()
+        {
+            tree = new CountTree("example_3.txt");
+            Assert.AreEqual(tree.Root().left.Action(), 9);
+        }
+
+        [TestMethod]
+        public void Test_6()
+        {
+            tree = new CountTree("example_6.txt");
+            Assert.AreEqual(tree.Count(), 6);
+        }
+
+        [TestMethod]
+        public void Test_4()
+        {
+            tree = new CountTree("example_4.txt");
+            Assert.AreEqual(tree.Count(), 4);
         }
     }
 }

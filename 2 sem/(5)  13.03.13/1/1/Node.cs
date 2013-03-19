@@ -7,10 +7,12 @@ namespace _1
         public Node left { set; get; }
         public Node right { set; get; }
         public Node parent { set; get; }
+
         public virtual void Print()
         {
             return;
         }
+
         public virtual int Action()
         {
             return '0';

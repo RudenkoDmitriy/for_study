@@ -84,7 +84,7 @@ namespace _1
 
         public Node Root()
         {
-            return root;
+            return root.left;
         }
     }
 }
