@@ -4,9 +4,9 @@ namespace _1
     public abstract class Node
     {
         public char value { set; get; }
-        public Node left { set; get; }
-        public Node right { set; get; }
-        public Node parent { set; get; }
+        public Node Left { set; get; }
+        public Node Right { set; get; }
+        public Node Parent { set; get; }
 
         public virtual void Print()
         {

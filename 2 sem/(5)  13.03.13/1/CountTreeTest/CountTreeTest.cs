@@ -12,42 +12,42 @@ namespace CountTreeTest
         [TestMethod]
         public void TestSimpleAdd()
         {
-            tree = new CountTree("example_2.txt");
+            tree = new CountTree("../../example_2.txt");
             Assert.AreEqual(tree.Count(), 2);
         }
 
         [TestMethod]
         public void TestSubtractAndMultiply()
         {
-            tree = new CountTree("example_0.txt");
+            tree = new CountTree("../../example_0.txt");
             Assert.AreEqual(tree.Count(), 0);
         }
 
         [TestMethod]
         public void TestDivide()
         {
-            tree = new CountTree("example_3.txt");
+            tree = new CountTree("../../example_3.txt");
             Assert.AreEqual(tree.Count(), 3);
         }
 
         [TestMethod]
         public void TestLeftNode()
         {
-            tree = new CountTree("example_3.txt");
-            Assert.AreEqual(tree.Root().left.Action(), 9);
+            tree = new CountTree("../../example_3.txt");
+            Assert.AreEqual(tree.Root().Left.Action(), 9);
         }
 
         [TestMethod]
         public void Test_6()
         {
-            tree = new CountTree("example_6.txt");
+            tree = new CountTree("../../example_6.txt");
             Assert.AreEqual(tree.Count(), 6);
         }
 
         [TestMethod]
         public void Test_4()
         {
-            tree = new CountTree("example_4.txt");
+            tree = new CountTree("../../example_4.txt");
             Assert.AreEqual(tree.Count(), 4);
         }
     }

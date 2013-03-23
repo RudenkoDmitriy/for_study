@@ -16,15 +16,15 @@ namespace _1
 
         static void Main(string[] args)
         {
-            CounTreeTest("example_0.txt");
-            CounTreeTest("example_2.txt");
-            CounTreeTest("example_3.txt");
-            CounTreeTest("example_4.txt");
-            CounTreeTest("example_6.txt");
-            CountTree tree = new CountTree("example_4.txt");
-            tree.Root().left.Print();
+            CounTreeTest("../../example_0.txt");
+            CounTreeTest("../../example_2.txt");
+            CounTreeTest("../../example_3.txt");
+            CounTreeTest("../../example_4.txt");
+            CounTreeTest("../../example_6.txt");
+            CountTree tree = new CountTree("../../example_4.txt");
+            tree.Root().Left.Print();
             Console.WriteLine();
-            Console.WriteLine(tree.Root().left.Action());
+            Console.WriteLine(tree.Root().Left.Action());
             Console.ReadKey();
         }
     }

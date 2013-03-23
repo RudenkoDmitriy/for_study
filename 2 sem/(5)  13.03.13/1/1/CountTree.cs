@@ -22,32 +22,32 @@ namespace _1
             return new Number();
         }
 
-        private void Add(Node  pos, bool check)
+        private void Add(Node pos, bool check)
         {
             char c = 'a';
-            if  (countOfExample < example.Length)
+            if (countOfExample < example.Length)
             {
                 c = example[countOfExample];
                 ++countOfExample;
                 if (c != '(' && c != ')' && c != ' ')
                 {
-                    Node temp = TypeOfNode(c);                   
+                    Node temp = TypeOfNode(c);
                     temp.value = c;
-                    temp.parent = pos;
-                    temp.left = new Number();
-                    temp.right = new Number();
-                    temp.left.parent = temp;
-                    temp.right.parent = temp;
+                    temp.Parent = pos;
+                    temp.Left = new Number();
+                    temp.Right = new Number();
+                    temp.Left.Parent = temp;
+                    temp.Right.Parent = temp;
                     if (check)
                     {
-                        pos.left = temp;
+                        pos.Left = temp;
                     }
                     else
                     {
-                        pos.right = temp;                    
+                        pos.Right = temp;
                     }
-                    Add(pos.left, true);
-                    Add(pos, false);               
+                    Add(pos.Left, true);
+                    Add(pos, false);
                 }
                 if (c == '(')
                 {
@@ -59,11 +59,11 @@ namespace _1
         public CountTree(string s)
         {
             root = new Add();
-            root.left = new Number();
-            root.right = new Number();
-            root.left.parent = root;
-            root.right.parent = root;
-            root.parent = root;
+            root.Left = new Number();
+            root.Right = new Number();
+            root.Left.Parent = root;
+            root.Right.Parent = root;
+            root.Parent = root;
             countOfExample = 0;
             using (StreamReader f = new StreamReader(s))
             {
@@ -72,19 +72,19 @@ namespace _1
             Add(root, true);
         }
 
-        public int  Count()
+        public int Count()
         {
-            return root.left.Action();
+            return root.Left.Action();
         }
 
         public void Print()
         {
-            root.left.Print();
+            root.Left.Print();
         }
 
         public Node Root()
         {
-            return root.left;
+            return root.Left;
         }
     }
 }
