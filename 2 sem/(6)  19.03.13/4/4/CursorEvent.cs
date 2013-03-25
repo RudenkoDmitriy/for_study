@@ -3,33 +3,55 @@ namespace _4
 {
     public class CursorEvent
     {
-        public event EventHandler left;
-        public event EventHandler right;
-        public event EventHandler up;
-        public event EventHandler down;
+        public event EventHandler left = (sender, args) => { };
+        public event EventHandler right = (sender, args) => { };
+        public event EventHandler up = (sender, args) => { };
+        public event EventHandler down = (sender, args) => { };
 
         public void EventLeft(EventArgs e)
         {
-            EventHandler Left = left;
-            Left(this, e);
+            left.Invoke(this, e);
         }
 
         public void EventDown(EventArgs e)
         {
-            EventHandler Down = down;
-            Down(this, e);
+            down.Invoke(this, e);
         }
 
         public void EventRight(EventArgs e)
         {
-            EventHandler Right = right;
-            Right(this, e);
+            right.Invoke(this, e);
         }
 
         public void EventUp(EventArgs e)
         {
-            EventHandler Up = up;
-            Up(this, e);
+            up.Invoke(this, e);
+        }
+
+        public CursorEvent()
+        {
+            EventArgs eArgs = new EventArgs();
+            while (true)
+            {             
+                var key = Console.ReadKey(false);
+                Console.ReadKey();
+                if (key.Key == ConsoleKey.UpArrow)
+                {
+                    EventUp(eArgs);
+                }
+                if (key.Key == ConsoleKey.DownArrow)
+                {
+                    EventDown(eArgs);
+                }
+                if (key.Key == ConsoleKey.LeftArrow)
+                {
+                    EventLeft(eArgs);
+                }
+                if (key.Key == ConsoleKey.RightArrow)
+                {
+                    EventRight(eArgs);
+                }
+            }
         }
     }
 }

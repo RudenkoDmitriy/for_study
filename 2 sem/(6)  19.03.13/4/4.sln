@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4", "4\4.csproj", "{5A00D866-CAE4-4894-9AB2-5489FCF9B926}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CursorEvenrTest", "CursorEvenrTest\CursorEvenrTest.csproj", "{C325D67C-2BEB-49BC-B259-441586C2AE20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CursorEvenrTest", "CursorEventTest\CursorEvenrTest.csproj", "{C325D67C-2BEB-49BC-B259-441586C2AE20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
