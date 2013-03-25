@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
 namespace _1
 {
@@ -32,12 +31,7 @@ namespace _1
                 if (c != '(' && c != ')' && c != ' ')
                 {
                     Node temp = TypeOfNode(c);
-                    temp.value = c;
-                    temp.Parent = pos;
-                    temp.Left = new Number();
-                    temp.Right = new Number();
-                    temp.Left.Parent = temp;
-                    temp.Right.Parent = temp;
+                    temp.Value = c;
                     if (check)
                     {
                         pos.Left = temp;
@@ -59,11 +53,6 @@ namespace _1
         public CountTree(string s)
         {
             root = new Add();
-            root.Left = new Number();
-            root.Right = new Number();
-            root.Left.Parent = root;
-            root.Right.Parent = root;
-            root.Parent = root;
             countOfExample = 0;
             using (StreamReader f = new StreamReader(s))
             {

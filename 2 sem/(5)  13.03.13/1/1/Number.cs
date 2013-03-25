@@ -6,13 +6,13 @@ namespace _1
     {
         public override int Action()
         {
-            return Convert.ToInt32(value) - 48;
+            return Convert.ToInt32(Value) - 48;
         }
 
         public override void Print()
         {
             Console.Write(' ');
-            Console.Write(value);
+            Console.Write(Value);
             Console.Write(' ');
         }
     }

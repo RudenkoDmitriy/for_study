@@ -9,7 +9,7 @@ namespace _1
             return Left.Action() / Right.Action();
         }
 
-        public override void Print_2()
+        public override void PrintOperation()
         {
             Console.Write('/');
         }
