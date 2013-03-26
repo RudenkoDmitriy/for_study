@@ -15,6 +15,11 @@ namespace _4
         public void CursoreMoveLeft(Object sender, EventArgs e)
         {
             Console.CursorLeft--;
+            if (Console.CursorLeft < 2)
+            {
+                return;
+            }
+            Console.CursorLeft--;
         }
 
         public void CursoreMoveRight(Object sender, EventArgs e)
@@ -24,12 +29,18 @@ namespace _4
 
         public void CursoreMoveTop(Object sender, EventArgs e)
         {
+            Console.CursorLeft--;
+            if (Console.CursorTop < 1)
+            {
+                return;
+            }
             Console.CursorTop--;
         }
 
         public void CursoreMoveBottom(Object sender, EventArgs e)
         {
             Console.CursorTop++;
+            Console.CursorLeft--;
         }
     }
 }

@@ -6,7 +6,9 @@ namespace _4
     {
         static void Main(string[] args)
         {
-            MoveCursore cursore = new MoveCursore(new CursorEvent());
+            CursorEvent c = new CursorEvent();
+            MoveCursore cursore = new MoveCursore(c);
+            c.Run();           
         }
     }
 }
