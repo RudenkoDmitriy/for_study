@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace _1
 {
-    public class Operation : Node
+    public abstract class Operation : Node
     {
-        public Operation()
-        {
-            Left = new Number();
-            Right = new Number();
-        }
-
         public override void Print()
         {
             Console.Write('(');
@@ -23,11 +17,6 @@ namespace _1
             Console.Write(')');
         }
 
-        public virtual void PrintOperation() { }
-
-        public override int Action()
-        {
-            return 0;
-        }
+        public abstract void PrintOperation();
     }
 }
