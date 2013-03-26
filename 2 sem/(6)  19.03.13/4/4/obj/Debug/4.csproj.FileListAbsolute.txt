@@ -1,6 +1,0 @@
-C:\Users\Александр\Documents\GitHub\for_study\2 sem\(6)  19.03.13\4\4\bin\Debug\4.exe.config
-C:\Users\Александр\Documents\GitHub\for_study\2 sem\(6)  19.03.13\4\4\bin\Debug\4.exe
-C:\Users\Александр\Documents\GitHub\for_study\2 sem\(6)  19.03.13\4\4\bin\Debug\4.pdb
-C:\Users\Александр\Documents\GitHub\for_study\2 sem\(6)  19.03.13\4\4\obj\Debug\4.csprojResolveAssemblyReference.cache
-C:\Users\Александр\Documents\GitHub\for_study\2 sem\(6)  19.03.13\4\4\obj\Debug\4.exe
-C:\Users\Александр\Documents\GitHub\for_study\2 sem\(6)  19.03.13\4\4\obj\Debug\4.pdb
