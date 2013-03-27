@@ -12,7 +12,7 @@ namespace _4
         {
             while (true)
             {             
-                var key = Console.ReadKey(false);
+                var key = Console.ReadKey(true);
                 if (key.Key == ConsoleKey.UpArrow)
                 {
                     up(this, EventArgs.Empty);
