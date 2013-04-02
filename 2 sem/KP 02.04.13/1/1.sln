@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1", "1\1.csproj", "{AAD72FEC-2BBE-403E-9E33-686C18D02417}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueTest", "QueueTest\QueueTest.csproj", "{B8C941E2-05EB-4111-9CDF-CE800CB41248}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAD72FEC-2BBE-403E-9E33-686C18D02417}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAD72FEC-2BBE-403E-9E33-686C18D02417}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAD72FEC-2BBE-403E-9E33-686C18D02417}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAD72FEC-2BBE-403E-9E33-686C18D02417}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8C941E2-05EB-4111-9CDF-CE800CB41248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8C941E2-05EB-4111-9CDF-CE800CB41248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8C941E2-05EB-4111-9CDF-CE800CB41248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8C941E2-05EB-4111-9CDF-CE800CB41248}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
