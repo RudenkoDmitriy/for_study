@@ -17,7 +17,7 @@ namespace _2
             InitializeComponent();
         }
 
-        private void timerForClock_Tick(object sender, EventArgs e)
+        private void OnTimerForClock(object sender, EventArgs e)
         {
             clock.Text = DateTime.Now.Hour.ToString() + "." + DateTime.Now.Minute.ToString() + "." + DateTime.Now.Second.ToString();
         }

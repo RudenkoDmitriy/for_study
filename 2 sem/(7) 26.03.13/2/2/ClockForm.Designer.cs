@@ -37,7 +37,7 @@
             // 
             this.timerForClock.Enabled = true;
             this.timerForClock.Interval = 1;
-            this.timerForClock.Tick += new System.EventHandler(this.timerForClock_Tick);
+            this.timerForClock.Tick += new System.EventHandler(this.OnTimerForClock);
             // 
             // clock
             // 
