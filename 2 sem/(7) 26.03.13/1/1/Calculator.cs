@@ -64,7 +64,7 @@ namespace _1
         /// </summary>
         public void Add()
         {
-            AddNewNumber();
+            this.AddNewNumber();
             sign = '+';
         }
 
@@ -73,7 +73,7 @@ namespace _1
         /// </summary>
         public void Subtract()
         {
-            AddNewNumber();
+            this.AddNewNumber();
             sign = '-';
         }
 
@@ -82,7 +82,7 @@ namespace _1
         /// </summary>
         public void Miltiply()
         {
-            AddNewNumber();
+            this.AddNewNumber();
             sign = '*';
         }
 
@@ -91,12 +91,13 @@ namespace _1
         /// </summary>
         public void Divide()
         {
-            AddNewNumber();
+            this.AddNewNumber();
             sign = '/';
         }
 
         private void AddNewNumber()
         {
+            this.Count();
             tempNumberForCount = currentNumber;
             currentNumber = 0;
         }
