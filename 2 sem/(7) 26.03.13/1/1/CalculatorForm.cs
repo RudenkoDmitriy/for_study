@@ -20,8 +20,8 @@ namespace _1
         }
 
         private void OnButtonNumberClick(object sender, EventArgs e)
-        { 
-            int num = Convert.ToInt32(sender.ToString()[sender.ToString().Length - 1]) - 48;
+        {
+            int num = Convert.ToInt32((sender as Button).Text);
             calculator.GetNewNumber(num);
             textBox.Text = calculator.GetNumber().ToString();
         }
