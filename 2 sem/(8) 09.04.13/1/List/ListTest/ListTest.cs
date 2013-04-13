@@ -16,15 +16,15 @@ namespace ListTest
         [TestMethod]
         public void TestInsert()
         {
-            list.Insert(10, list.First());
-            Assert.AreEqual(10, list.Retrieve(list.First().Next));
+            list.Insert(10, list.First);
+            Assert.AreEqual(10, list.First.Next.Value);
         }
 
         [TestMethod]
         public void TestFind()
         {
             Assert.AreEqual(false, list.Find(2));
-            list.Insert(2, list.First());
+            list.Insert(2, list.First);
             Assert.AreEqual(true, list.Find(2));
         }
 
@@ -32,13 +32,13 @@ namespace ListTest
         [ExpectedException(typeof(ListEmptyException))]
         public void TestException()
         {
-            list.Remove(list.First());
+            list.Remove(list.First);
         }
 
         [TestMethod]
         public void TestRemove()
         {
-            ListElement<int> pos = list.First();
+            ListElement<int> pos = list.First;
             list.Insert(4, pos);
             pos = pos.Next;
             Assert.AreEqual(true, list.Find(4));
@@ -49,7 +49,7 @@ namespace ListTest
         [TestMethod]
         public void TestForeach()
         {
-            ListElement<int> pos = list.First();
+            ListElement<int> pos = list.First;
             list.Insert(1, pos);
             pos = pos.Next;
             list.Insert(2, pos);
@@ -71,7 +71,7 @@ namespace ListTest
         public void TestChar()
         {
             var list = new List<char>();
-            var pos = list.First();
+            var pos = list.First;
             list.Insert('v', pos);
             pos = pos.Next;
             list.Insert('c', pos);
