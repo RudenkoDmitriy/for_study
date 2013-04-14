@@ -16,7 +16,7 @@ namespace ListTest
         [TestMethod]
         public void TestInsert()
         {
-            list.Insert(10, list.First);
+            list.Insert(10, 0);
             Assert.AreEqual(10, list.First.Next.Value);
         }
 
@@ -24,7 +24,7 @@ namespace ListTest
         public void TestFind()
         {
             Assert.AreEqual(false, list.Find(2));
-            list.Insert(2, list.First);
+            list.Insert(2, 0);
             Assert.AreEqual(true, list.Find(2));
         }
 
@@ -32,17 +32,16 @@ namespace ListTest
         [ExpectedException(typeof(ListEmptyException))]
         public void TestException()
         {
-            list.Remove(list.First);
+            list.Remove(0);
         }
 
         [TestMethod]
         public void TestRemove()
         {
-            ListElement<int> pos = list.First;
-            list.Insert(4, pos);
-            pos = pos.Next;
+            list.Insert(4, 0);
+            list.Insert(45, 1);
             Assert.AreEqual(true, list.Find(4));
-            list.Remove(pos);
+            list.Remove(0);
             Assert.AreEqual(false, list.Find(4));
         }
 
@@ -50,11 +49,11 @@ namespace ListTest
         public void TestForeach()
         {
             ListElement<int> pos = list.First;
-            list.Insert(1, pos);
+            list.Insert(1, 0);
             pos = pos.Next;
-            list.Insert(2, pos);
+            list.Insert(2, 1);
             pos = pos.Next;
-            list.Insert(3, pos);
+            list.Insert(3, 2);
             var arr = new int[3];
             int i = 0;
             foreach(int x in list)
@@ -71,12 +70,9 @@ namespace ListTest
         public void TestChar()
         {
             var list = new List<char>();
-            var pos = list.First;
-            list.Insert('v', pos);
-            pos = pos.Next;
-            list.Insert('c', pos);
-            pos = pos.Next;
-            list.Insert('d', pos);
+            list.Insert('v', 0);
+            list.Insert('c', 1);
+            list.Insert('d', 2);
             var arr = new char[3];
             int i = 0;
             foreach (char x in list)

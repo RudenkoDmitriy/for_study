@@ -16,34 +16,70 @@ namespace _2
         /// <param name="value">
         /// Value of this element.
         /// </param>
-        /// <param name="pos">
-        /// Position in list, to insert this element.
+        /// <param name="position">
+        /// Position in list, to insert this element. ('0' - 'Length of list');
         /// </param>
-        public void Insert(T value, ListElement<T> pos)
+        public void Insert(T value, int position)
         {
+            ListElement<T> pos = this.head;
+            if (position > this.Length)
+            {
+                position = this.length;
+            }
+            if (position < 0)
+            {
+                position = 0;
+            }
+            for (int i = 0; i < position; ++i)
+            {
+                pos = pos.Next;
+            }
             ListElement<T> temp = new ListElement<T>();
             temp.Value = value;
-            temp.Next = pos;
+            if (pos != null)
+            {
+                temp.Next = pos.Next;
+            }
             pos.Next = temp;
             ++length;
         }
 
         /// <summary>
-        /// Remove element in list by position.
+        /// Remove element in list by position. ('0' - 'Length of list - 1')
         /// </summary>
-        /// <param name="pos"></param>
-        public void Remove(ListElement<T> pos)
+        /// <param name="position"></param>
+        public void Remove(int position)
         {
-            ListElement<T> temp = this.head;
+            ListElement<T> temp = this.head.Next;
             if (this.head.Next == null)
             {
                 throw new ListEmptyException();
             }
-            while (temp.Next == null || temp.Next != pos)
+            if (position == 0)
+            {
+                if (this.head.Next.Next == null)
+                {
+                    this.head.Next = null;
+                }
+                else
+                {
+                    this.head.Next = this.head.Next.Next;
+                }
+                --length;
+                return;
+            }
+            for (int i = 1; i < position; ++i)
             {
                 temp = temp.Next;
             }
-            temp.Next = pos.Next;
+            if (position == (this.Length))
+            {
+                temp.Next = null;
+            }
+            else
+            {
+                temp.Next = temp.Next.Next;
+            }
             --length;
         }
 
