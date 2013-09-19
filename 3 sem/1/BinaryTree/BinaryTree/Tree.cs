@@ -103,45 +103,34 @@ namespace BinaryTree
         public void Remove(int value)
         {
             if (value > this.Item)
-            {
+            {              
                 if (this.Right != null)
                 {
+                    if ((this.Right.Item == value) && (this.Right.Left == null) && (this.Right.Right == null))
+                    {
+                        this.Right = null;
+                        return;
+                    }
                     this.Right.Remove(value);
                 }
-                else
-                {
-                    return;
-                }
+                return;
             }
             if (value < this.Item)
-            {
+            {             
                 if (this.Left != null)
                 {
+                    if ((this.Left.Item == value) && (this.Left.Left == null) && (this.Left.Right == null))
+                    {
+                        this.Right = null;
+                        return;
+                    }
                     this.Left.Remove(value);
                 }
-                else
-                {
-                    return;
-                }
+                return;
             }
             if (value == this.Item)
             {
                 this.length--;
-                if (this.Right == null && this.Left == null)
-                {
-                   /* if (this.parent.Left == this)
-                    {
-                        this.parent.Left = null;
-                        return;
-                    }
-                    else
-                    {
-                        this.parent.Right = null;
-                        return;
-                    }*/
-                    SetToNull(ref this.parent, this.parent.Left == this);
-                    return;
-                }
                 if (this.Right == null)
                 {
                     this.parent.Left = this.Left;
