@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroArray", "ZeroArray\ZeroArray.csproj", "{AF254B0D-D124-4D21-9BEB-431F856CD676}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroArrayTests", "ZeroArrayTests\ZeroArrayTests.csproj", "{A2869C84-69EA-431E-85CA-84E33F54847D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF254B0D-D124-4D21-9BEB-431F856CD676}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF254B0D-D124-4D21-9BEB-431F856CD676}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF254B0D-D124-4D21-9BEB-431F856CD676}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF254B0D-D124-4D21-9BEB-431F856CD676}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2869C84-69EA-431E-85CA-84E33F54847D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2869C84-69EA-431E-85CA-84E33F54847D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2869C84-69EA-431E-85CA-84E33F54847D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2869C84-69EA-431E-85CA-84E33F54847D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
