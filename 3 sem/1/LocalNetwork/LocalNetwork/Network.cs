@@ -1,50 +1,43 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
+
 namespace LocalNetwork
 {
     public class Network
     {
         /// <summary>
-        ///  
+        /// Path - path to input file. isRand checks real or nor real random.
         /// </summary>
-        /// <param name="path">
-        /// First has written number of computers.
-        /// Second has written list of computers in the form of
-        /// w, inter, 1....enter       where 1/0 - infected/ not infected, w/l/m - windows/linux/mac.
-        /// Third has written matrix in one string.
-        /// </param>
-        public Network(string path)
+        /// <param name="path"></param>
+        /// <param name="isRand"></param>
+        public Network(string path, bool isRand)
         {
             StreamReader file = new System.IO.StreamReader(path);
-            this.numberOfComputers = file.Read() - 48;
-            if (this.numberOfComputers < 1)
-                throw new IncorrectInputException();
             file.ReadLine();
-            this.listOfComputers = new Computer[this.numberOfComputers];
-            this.matrix = new bool[this.numberOfComputers][];
-            for (int i = 0; i < this.numberOfComputers; ++i)
+            this.NumberOfComputers = file.Read() - 48;
+            if (this.NumberOfComputers < 1)
+                throw new IncorrectInputException();
+            this.Graph = new Graph(this.NumberOfComputers);
+            file.ReadLine();
+            file.ReadLine();
+            this.ListOfComputers = new Computer[this.NumberOfComputers];    
+            for (int i = 0; i < this.NumberOfComputers; ++i)
             {
-                string temp = file.ReadLine();
-                char os = temp[0];
-                int isInfect = file.Read() - 48;
-                file.ReadLine();
+                string[] temp = file.ReadLine().Split(' ');
+                char os = temp[0][0];
+                int isInfect = temp[1][0] - 48;
                 if ((os != 'w' && os != 'l' && os != 'm') || (isInfect != 0 && isInfect != 1))
                     throw new IncorrectInputException();
-                this.listOfComputers[i] = new Computer(os, isInfect);
+                this.ListOfComputers[i] = new Computer(os, isInfect, isRand);
             }
-            string[] matr = file.ReadLine().Split(' ');
-            int count = 0;
-            for (int i = 0; i < this.numberOfComputers; ++i)
+            file.ReadLine();
+            while (!file.EndOfStream) 
             {
-                this.matrix[i] = new bool[this.numberOfComputers];
-                for (int j = 0; j < this.numberOfComputers; ++j)
-                {
-                    int temp = matr[count][0] - 48;
-                    if (temp !=0 && temp != 1)
-                        throw new IncorrectInputException();
-                    matrix[i][j] = temp == 1;
-                    count++;                  
-                }
+                string[] temp = file.ReadLine().Split(' ');
+                if (((temp[0][0] - 48) < 0) || ((temp[1][0] - 48) < 0) || ((temp[1][0] - 48) > (this.Graph.NumberOfVertex - 1)) || ((temp[0][0] - 48) > (this.Graph.NumberOfVertex - 1)))
+                    throw new IncorrectInputException();
+                this.Graph.AddEdge(temp[0][0] - 48, temp[1][0] - 48);
             }
         }
 
@@ -53,10 +46,33 @@ namespace LocalNetwork
         /// </summary>
         public void Step()
         {
-            bool[] visited = new bool[numberOfComputers];
-            for (int i = 0; i < this.numberOfComputers; ++i)
-                visited[i] = false;
-            this.Traverse(0, false, visited);
+            Stack<int> st1 = this.Graph.Traverse();
+            Stack<int> st2 = new Stack<int>();
+            while (st1.Count > 1)
+            {
+                int temp = st1.Pop();
+                if (this.Graph.IsEdge(temp, st1.Peek()))
+                {
+                    if (this.ListOfComputers[temp].Virus)
+                        this.ListOfComputers[st1.Peek()].Infection();
+                }
+                else
+                {
+                    if (st2.Count != 0)
+                    {
+                        if (this.Graph.IsEdge(st2.Peek(), temp))
+                        {
+                            if (this.ListOfComputers[temp].Virus)
+                                this.ListOfComputers[st2.Peek()].Infection();
+                            st2.Pop();
+                        }
+                        else
+                            st2.Push(temp);
+                    }
+                    else
+                        st2.Push(temp);
+                }
+            }
         }
 
         /// <summary>
@@ -64,32 +80,22 @@ namespace LocalNetwork
         /// </summary>
         public void Show()
         {
-            for (int i = 0; i < this.numberOfComputers; ++i)
+            for (int i = 0; i < this.NumberOfComputers; ++i)
             {
                 string inf;
-                if (listOfComputers[i].Virus)
+                if (ListOfComputers[i].Virus)
                     inf = " infected.";
                 else
                     inf = " not infected.";
-                string temp = i + 1 + ") " + listOfComputers[i].OperationSystem + inf;
+                string temp = i + 1 + ") " + ListOfComputers[i].OperationSystem + inf;
                 Console.WriteLine(temp);
             }
             Console.WriteLine();
         }
 
-        private Computer[] listOfComputers;
-        private bool[][] matrix;
-        private int numberOfComputers;
-        private void Traverse(int numberOfComputer, bool isInfection, bool[] visited)
-        {
-            visited[numberOfComputer] = true;
-            if (isInfection)
-                this.listOfComputers[numberOfComputer].Infection();
-            for (int i = 0; i < this.numberOfComputers; ++i)
-            {
-                if (!visited[i] && this.matrix[numberOfComputer][i])
-                    this.Traverse(i, this.listOfComputers[numberOfComputer].Virus, visited);
-            }
-        }
+        public Graph Graph { get; private set; }
+        public Computer[] ListOfComputers { get; private set; }
+        public int NumberOfComputers { get; private set; }
+      
     }
 }

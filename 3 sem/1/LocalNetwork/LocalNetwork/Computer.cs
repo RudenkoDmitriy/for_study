@@ -3,8 +3,18 @@ namespace LocalNetwork
 {
     public class Computer
     {
-        public Computer(char operationSystem, int isInfect)
+        /// <summary>
+        /// OS - w/l/m. isInfect - 1/0. isRand - Real/ Not Real Random.
+        /// </summary>
+        /// <param name="operationSystem"></param>
+        /// <param name="isInfect"></param>
+        /// <param name="isRand"></param>
+        public Computer(char operationSystem, int isInfect, bool isRand)
         {
+            if (isRand)
+                this.rand = new System.Random();
+            else
+                this.rand = new System.Random(1565456);
             if (operationSystem == 'w')
             {
                 this.OperationSystem = OS.Windows;
@@ -17,14 +27,7 @@ namespace LocalNetwork
             {
                 this.OperationSystem = OS.Mac;
             }
-            if (isInfect == 1)
-            {
-                this.Virus = true;
-            }
-            else
-            {
-                this.Virus = false;
-            }
+            this.Virus = (isInfect == 1);
             probability = 0;
         }
 
@@ -37,6 +40,7 @@ namespace LocalNetwork
             {
                 return;
             }
+            int tRand = this.rand.Next(0, 100);
             if (this.probability > 50)
             {
                 this.Virus = true;
@@ -44,15 +48,15 @@ namespace LocalNetwork
             }
             if (this.OperationSystem == OS.Windows)
             {
-                this.probability += probabilityWindows;
+                this.probability += probabilityWindows * tRand / 50;
             }
             if (this.OperationSystem == OS.Linux)
             {
-                this.probability += probabilityLinux;
+                this.probability += probabilityLinux * tRand / 50;
             }
             if (this.OperationSystem == OS.Mac)
             {
-                this.probability += probabilityMac;
+                this.probability += probabilityMac * tRand / 50;
             }
         }
 
@@ -70,6 +74,7 @@ namespace LocalNetwork
 
         public enum OS { Windows, Linux, Mac };
 
+        private System.Random rand;
         private int  probabilityWindows = 30;
         private int probabilityLinux = 20;
         private int probabilityMac = 15;
