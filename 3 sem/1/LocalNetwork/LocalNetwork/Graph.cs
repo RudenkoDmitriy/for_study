@@ -42,7 +42,7 @@ namespace LocalNetwork
         {
             Stack<int> st = new Stack<int>();
             bool[] visited = new bool[this.NumberOfVertex];
-            this.TraverseTemp(0, ref visited, ref st);
+            this.TraverseTemp(0, visited, st);
             return st;
         }
 
@@ -50,14 +50,14 @@ namespace LocalNetwork
         public bool[][] Matrix { get; private set; }
 
 
-        private void TraverseTemp(int numberOfVertex, ref bool[] visited, ref Stack<int> st)
+        private void TraverseTemp(int numberOfVertex, bool[] visited, Stack<int> st)
         {
             visited[numberOfVertex] = true;
             st.Push(numberOfVertex);
             for (int i = 0; i < this.NumberOfVertex; ++i)
             {
                 if (!visited[i] && this.Matrix[numberOfVertex][i])
-                    this.TraverseTemp(i, ref visited, ref st);
+                    this.TraverseTemp(i, visited, st);
             }
         }
     }

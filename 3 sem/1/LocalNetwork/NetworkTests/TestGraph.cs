@@ -43,40 +43,4 @@ namespace NetworkTests
             }
         }
     }
-
-    [TestClass]
-    public class TestComputer
-    {
-        [TestMethod]
-        public void TestInfectAndConstructor()
-        {
-            Computer c = new Computer('w', 0, false);
-            Assert.AreEqual(c.OperationSystem, Computer.OS.Windows);
-            Assert.IsFalse(c.Virus);
-            c.Infection();
-            c.Infection();
-            c.Infection();
-            Assert.IsTrue(c.Virus);
-        }
-    }
-
-    [TestClass]
-    public class TestNetwork
-    {
-        [TestMethod]
-        public void TestConstructor()
-        {
-            Network net = new Network("..\\..\\..\\test.txt", false);
-            Assert.AreEqual(net.NumberOfComputers, 5);
-            Assert.AreEqual(net.ListOfComputers[2].OperationSystem, Computer.OS.Mac);
-            Graph g = new Graph(5);
-            g.AddEdge(0, 1);
-            g.AddEdge(1, 2);
-            g.AddEdge(1, 3);
-            g.AddEdge(3, 4);
-            for (int i = 0; i < 5; ++i)
-                for (int j = 0; j < 5; ++j)
-                    Assert.AreEqual(g.Matrix[i][j], net.Graph.Matrix[i][j]);
-        }
-    }
 }

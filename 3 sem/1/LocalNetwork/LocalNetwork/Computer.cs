@@ -9,12 +9,8 @@ namespace LocalNetwork
         /// <param name="operationSystem"></param>
         /// <param name="isInfect"></param>
         /// <param name="isRand"></param>
-        public Computer(char operationSystem, int isInfect, bool isRand)
+        public Computer(char operationSystem, int isInfect)
         {
-            if (isRand)
-                this.rand = new System.Random();
-            else
-                this.rand = new System.Random(1565456);
             if (operationSystem == 'w')
             {
                 this.OperationSystem = OS.Windows;
@@ -34,13 +30,12 @@ namespace LocalNetwork
         /// <summary>
         /// This function use to infect computer.
         /// </summary>
-        public void Infection()
+        public void Infection(int random)
         {
             if (this.Virus)
             {
                 return;
             }
-            int tRand = this.rand.Next(0, 100);
             if (this.probability > 50)
             {
                 this.Virus = true;
@@ -48,15 +43,15 @@ namespace LocalNetwork
             }
             if (this.OperationSystem == OS.Windows)
             {
-                this.probability += probabilityWindows * tRand / 50;
+                this.probability += probabilityWindows * random / 50;
             }
             if (this.OperationSystem == OS.Linux)
             {
-                this.probability += probabilityLinux * tRand / 50;
+                this.probability += probabilityLinux * random / 50;
             }
             if (this.OperationSystem == OS.Mac)
             {
-                this.probability += probabilityMac * tRand / 50;
+                this.probability += probabilityMac * random / 50;
             }
         }
 
@@ -75,9 +70,9 @@ namespace LocalNetwork
         public enum OS { Windows, Linux, Mac };
 
         private System.Random rand;
-        private int  probabilityWindows = 30;
-        private int probabilityLinux = 20;
-        private int probabilityMac = 15;
+        private const int probabilityWindows = 30;
+        private const int probabilityLinux = 20;
+        private const int probabilityMac = 15;
         private int probability;
     }
 }
