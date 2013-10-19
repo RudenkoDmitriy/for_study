@@ -7,9 +7,9 @@ namespace LocalNetwork
         public Graph(int numberOfVertex)
         {
             this.NumberOfVertex = numberOfVertex;
-            this.Matrix = new bool[numberOfVertex][];
+            this.matrix = new bool[numberOfVertex][];
             for (int i = 0; i < numberOfVertex; ++i)
-                this.Matrix[i] = new bool[numberOfVertex];
+                this.matrix[i] = new bool[numberOfVertex];
         }
 
         /// <summary>
@@ -19,8 +19,8 @@ namespace LocalNetwork
         /// <param name="vertex2"></param>
         public void AddEdge(int vertex1, int vertex2)
         {
-            Matrix[vertex1][vertex2] = true;
-            Matrix[vertex2][vertex1] = true;
+            matrix[vertex1][vertex2] = true;
+            matrix[vertex2][vertex1] = true;
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace LocalNetwork
         /// <returns></returns>
         public bool IsEdge(int vertex1, int vertex2)
         {
-            return Matrix[vertex1][vertex2];
+            return matrix[vertex1][vertex2];
         }
 
         /// <summary>
@@ -46,9 +46,12 @@ namespace LocalNetwork
             return st;
         }
 
-        public int NumberOfVertex { get; private set; }
-        public bool[][] Matrix { get; private set; }
+        public bool[][] GetMatrix()
+        {
+            return this.matrix;
+        }
 
+        public int NumberOfVertex { get; private set; }
 
         private void TraverseTemp(int numberOfVertex, bool[] visited, Stack<int> st)
         {
@@ -56,10 +59,12 @@ namespace LocalNetwork
             st.Push(numberOfVertex);
             for (int i = 0; i < this.NumberOfVertex; ++i)
             {
-                if (!visited[i] && this.Matrix[numberOfVertex][i])
+                if (!visited[i] && this.matrix[numberOfVertex][i])
                     this.TraverseTemp(i, visited, st);
             }
         }
+
+        private bool[][] matrix;
     }
 }
 

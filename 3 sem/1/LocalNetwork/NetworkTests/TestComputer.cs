@@ -11,13 +11,19 @@ namespace NetworkTests
         [TestMethod]
         public void TestInfectAndConstructor()
         {
-            Computer c = new Computer('w', 0);
+            Computer c = new Computer('w', 0, RandNext);
             Assert.AreEqual(c.OperationSystem, Computer.OS.Windows);
             Assert.IsFalse(c.Virus);
-            c.Infection(100);
-            c.Infection(100);
-            c.Infection(100);
+            c.Infection();
+            c.Infection();
+            c.Infection();
             Assert.IsTrue(c.Virus);
+        }
+
+        private Random rand = new Random(1565456);
+        private int RandNext()
+        {
+            return rand.Next(0, 100);
         }
     }
 }

@@ -11,13 +11,9 @@ namespace LocalNetwork
         /// </summary>
         /// <param name="path"></param>
         /// <param name="isRand"></param>
-        public Network(string path, bool isRand)
+        public Network(string path, Computer.RandomDelegate rand)
         {
             StreamReader file = new System.IO.StreamReader(path);
-            if (isRand)
-                this.rand = new System.Random();
-            else
-                this.rand = new System.Random(1565456);
             file.ReadLine();
             this.NumberOfComputers = file.Read() - 48;
             if (this.NumberOfComputers < 1)
@@ -33,7 +29,7 @@ namespace LocalNetwork
                 int isInfect = temp[1][0] - 48;
                 if ((os != 'w' && os != 'l' && os != 'm') || (isInfect != 0 && isInfect != 1))
                     throw new IncorrectInputException();
-                this.ListOfComputers[i] = new Computer(os, isInfect);
+                this.ListOfComputers[i] = new Computer(os, isInfect, rand);
             }
             file.ReadLine();
             while (!file.EndOfStream)
@@ -58,7 +54,7 @@ namespace LocalNetwork
                 if (this.Graph.IsEdge(temp, st1.Peek()))
                 {
                     if (this.ListOfComputers[temp].Virus)
-                        this.ListOfComputers[st1.Peek()].Infection(this.rand.Next());
+                        this.ListOfComputers[st1.Peek()].Infection();
                 }
                 else
                 {
@@ -67,7 +63,7 @@ namespace LocalNetwork
                         if (this.Graph.IsEdge(st2.Peek(), temp))
                         {
                             if (this.ListOfComputers[temp].Virus)
-                                this.ListOfComputers[st2.Peek()].Infection(this.rand.Next());
+                                this.ListOfComputers[st2.Peek()].Infection();
                             st2.Pop();
                         }
                         else
