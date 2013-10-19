@@ -3,6 +3,12 @@ namespace Robots
 {
     public class RobotsNetwork
     {
+        /// <summary>
+        /// Builds network.
+        /// </summary>
+        /// <param name="path">
+        /// Path to file.
+        /// </param>
         public RobotsNetwork(string path)
         {
             System.IO.StreamReader file = new System.IO.StreamReader(path);
@@ -61,7 +67,7 @@ namespace Robots
             this.visited[robotNumber] = true;
             for (int i = 0; i < this.g.NumberOfVertex; ++i)
             {
-                if (!visited[i] && this.g.Matrix[robotNumber][i])
+                if (!visited[i] && this.g.GetMatrix()[robotNumber][i])
                     this.Traverse(i, !isClassA);
             }
         }

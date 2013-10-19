@@ -3,22 +3,40 @@ namespace Robots
 {
     public class Graph
     {
+        /// <summary>
+        /// Builds adjacency matrix. 
+        /// </summary>
+        /// <param name="numberOfVertex"></param>
         public Graph(int numberOfVertex)
         {
             this.NumberOfVertex = numberOfVertex;
-            this.Matrix = new bool[numberOfVertex][];
+            this.matrix = new bool[numberOfVertex][];
             for (int i = 0; i < numberOfVertex; ++i)
-                this.Matrix[i] = new bool[numberOfVertex];
+                this.matrix[i] = new bool[numberOfVertex];
         }
 
+        /// <summary>
+        /// Adds edge between vertex1 and vertex2.
+        /// </summary>
+        /// <param name="vertex1"></param>
+        /// <param name="vertex2"></param>
         public void AddEdge(int vertex1, int vertex2)
         {
-            Matrix[vertex1][vertex2] = true;
-            Matrix[vertex2][vertex1] = true;
+            matrix[vertex1][vertex2] = true;
+            matrix[vertex2][vertex1] = true;
+        }
+
+        /// <summary>
+        /// Returns adjacency matrix. 
+        /// </summary>
+        /// <returns></returns>
+        public bool[][] GetMatrix()
+        {
+            return this.matrix;
         }
 
         public int NumberOfVertex { get; private set; }
 
-        public bool[][] Matrix { get; private set; }     
+        private bool[][] matrix; 
     }
 }
