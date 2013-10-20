@@ -27,12 +27,12 @@ namespace Robots
         }
 
         /// <summary>
-        /// Returns adjacency matrix. 
+        /// Checks Is edge between  vertex1 and vertex2?
         /// </summary>
         /// <returns></returns>
-        public bool[][] GetMatrix()
+        public bool IsEdge (int vertex1, int vertex2)
         {
-            return this.matrix;
+            return this.matrix[vertex1][vertex2];
         }
 
         public int NumberOfVertex { get; private set; }

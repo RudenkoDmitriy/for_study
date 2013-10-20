@@ -67,7 +67,7 @@ namespace Robots
             this.visited[robotNumber] = true;
             for (int i = 0; i < this.g.NumberOfVertex; ++i)
             {
-                if (!visited[i] && this.g.GetMatrix()[robotNumber][i])
+                if (!visited[i] && this.g.IsEdge(robotNumber,i))
                     this.Traverse(i, !isClassA);
             }
         }
